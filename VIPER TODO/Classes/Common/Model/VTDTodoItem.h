@@ -23,6 +23,16 @@
 
 #import <Foundation/Foundation.h>
 
+///--------------------------------------------------
+/// Entity
+/// Entities are the model objects manipulated by an Interactor.
+/// The interactor never passes entities to the presentation layer.
+/// if you use core data, you will want your managed objects remain behind
+/// your data later.
+/// Interactors should not work with NSManagedObjects.
+/// Don't be surprised if your entities are just data structures.
+/// Any application dependent logic will most likely be an interactor.
+///--------------------------------------------------
 
 @interface VTDTodoItem : NSObject
 

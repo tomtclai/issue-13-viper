@@ -51,15 +51,17 @@
     return self;
 }
 
-
+///--------------------------------------------------
+/// The primary use case:
+/// to show the user any upcoming to-do items (anything due by the end of next week)
+///--------------------------------------------------
 - (void)findUpcomingItems
 {
-    __weak typeof(self) welf = self;
     NSDate *today = [self.clock today];
     NSDate *endOfNextWeek = [[NSCalendar currentCalendar] dateForEndOfFollowingWeekWithDate:today];
-    
+    __weak typeof(self) weakSelf = self;
     [self.dataManager todoItemsBetweenStartDate:today endDate:endOfNextWeek completionBlock:^(NSArray *todoItems) {
-        [welf.output foundUpcomingItems:[welf upcomingItemsFromToDoItems:todoItems]];
+        [weakSelf.output foundUpcomingItems:[weakSelf upcomingItemsFromToDoItems:todoItems]];
     }];
 }
 

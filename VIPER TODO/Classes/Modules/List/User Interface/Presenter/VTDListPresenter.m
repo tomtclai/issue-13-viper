@@ -31,6 +31,10 @@
 
 @implementation VTDListPresenter
 
+///--------------------------------------------------
+/// the presenter is a plain NSObject that mainly consists of logics
+/// to drive the UI
+///--------------------------------------------------
 - (void)updateView
 {
     [self.listInteractor findUpcomingItems];
@@ -38,7 +42,10 @@
 
 
 #pragma mark - List Interactor Output
-
+///--------------------------------------------------
+/// The presenter also receives results from an interactor and converts the
+/// results into a form that is efficient to display in a view.
+///--------------------------------------------------
 - (void)foundUpcomingItems:(NSArray *)upcomingItems
 {
     if ([upcomingItems count] == 0)
@@ -69,6 +76,9 @@
 
 #pragma mark -
 
+///--------------------------------------------------
+/// When the user taps the + button to add a to-do item, addNewEntry gets called
+///--------------------------------------------------
 - (void)addNewEntry
 {
     [self.listWireframe presentAddInterface];
